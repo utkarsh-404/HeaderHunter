@@ -120,5 +120,5 @@ MIT License. Free to use, improve, and share.
 
 ---
 
-**Created with ❤️ by [Your Name]**  
+**Created with ❤️ by Utkarsh Raj**  
 Follow on GitHub · Hack the Web · Stay Secure  
