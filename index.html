@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HeaderHunter Pro - HTTP Security Header Analyzer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="app-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="logo-text">HeaderHunter Pro</div>
+            </div>
+        </header>
+
+        <section class="input-section">
+            <h2 class="section-title">
+                <i class="fas fa-search"></i> Analyze Security Headers
+            </h2>
+            <div class="input-group">
+                <input 
+                    type="text" 
+                    class="url-input" 
+                    placeholder="https://example.com"
+                    id="url-input"
+                    value="https://www.google.com"
+                >
+                <button class="scan-btn" id="scan-btn">
+                    <i class="fas fa-radar"></i> Scan Headers
+                    <div class="spinner" id="scan-spinner"></div>
+                </button>
+            </div>
+            <div class="scan-tips">
+                <i class="fas fa-lightbulb"></i> Try scanning: 
+                <div class="website-suggestions">
+                    <div class="website-chip" data-url="https://www.google.com">google.com</div>
+                    <div class="website-chip" data-url="https://github.com">github.com</div>
+                    <div class="website-chip" data-url="https://mozilla.org">mozilla.org</div>
+                    <div class="website-chip" data-url="https://owasp.org">owasp.org</div>
+                    <div class="website-chip" data-url="https://example.com">example.com</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="main-layout">
+            <div class="dashboard">
+                <div class="dashboard-header">
+                    <div class="risk-meter">
+                        <div class="risk-circle" id="risk-circle">
+                            <div class="risk-value" id="risk-value">-</div>
+                        </div>
+                        <div class="risk-stats">
+                            <div class="stat-item">
+                                <div class="stat-value" id="headers-checked">0</div>
+                                <div class="stat-label">Checked</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="headers-missing">0</div>
+                                <div class="stat-label">Missing</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="headers-vulnerable">0</div>
+                                <div class="stat-label">Vulnerable</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="export-btn" id="export-btn">
+                        <i class="fas fa-file-export"></i> Export Report
+                    </button>
+                </div>
+
+                <h3 class="section-title">
+                    <i class="fas fa-shield-alt"></i> Security Header Analysis
+                </h3>
+
+                <div class="headers-grid" id="headers-grid">
+                    <div class="initial-state">
+                        <p><i class="fas fa-info-circle"></i> Enter a URL and click "Scan Headers" to analyze security headers</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attack Reference Panel -->
+            <div class="attack-panel">
+                <div class="panel-tabs">
+                    <button class="tab-btn active" data-tab="attack">Attack Types</button>
+                    <button class="tab-btn" data-tab="reference">Header References</button>
+                    <button class="tab-btn" data-tab="cve">CVEs</button>
+                </div>
+
+                <div class="attack-list" id="attack-list">
+                    <!-- Attack items will be dynamically generated here -->
+                </div>
+            </div>
+        </div>
+
+        <footer class="app-footer">
+            <p>HeaderHunter Pro - HTTP Security Header Analyzer for Cybersecurity Professionals</p>
+            <p>© 2025 HeaderHunter Pro. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Fix Modal -->
+    <div class="modal-overlay" id="fix-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-title">
+                    <i class="fas fa-code"></i>
+                    <span id="modal-header-name">Content-Security-Policy</span>
+                </h3>
+                <button class="close-modal" id="close-modal">&times;</button>
+            </div>
+            
+            <div class="config-tabs">
+                <button class="config-tab active" data-server="nginx">Nginx</button>
+                <button class="config-tab" data-server="apache">Apache</button>
+                <button class="config-tab" data-server="express">Express.js</button>
+                <button class="config-tab" data-server="iis">IIS</button>
+            </div>
+            
+            <div class="config-content">
+                <h4>Configuration</h4>
+                <div class="config-code" id="config-code">
+                    <!-- Configuration code will be inserted here -->
+                </div>
+                <button class="copy-btn" id="copy-btn">
+                    <i class="fas fa-copy"></i> Copy to Clipboard
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
